@@ -77,17 +77,22 @@ class HalaxyTest extends TestCase
     {
         $prependSum = $this->prependSum([1,2,3]);
         $this->assertTrue($prependSum == [6,1,2,3]);
+        $this->assertFalse($prependSum == [1,2,3]);
+        $this->assertFalse($prependSum == [6]);
     }
 
     public function test_find_last_key()
     {
         $findLastKey = $this->findLastKey(['world'=>'blue','new'=>'blue'],'blue');
         $this->assertTrue($findLastKey == 'new');
+        $this->assertFalse($findLastKey == 'world');
     }
 
     public function test_numbers_to_letters()
     {
         $numbersToLetters = $this->numbersToLetters('20 5 19 20+4 15 13 5');
         $this->assertTrue($numbersToLetters == 'TEST DOME');
+        $this->assertFalse($numbersToLetters == 'TESTDOME');
+        $this->assertFalse($numbersToLetters == 'TEST DOME ');
     }
 }
